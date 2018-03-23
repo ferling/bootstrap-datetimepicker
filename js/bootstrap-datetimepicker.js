@@ -723,7 +723,7 @@
 				endMonth = this.endDate.getUTCMonth() + 1,
 				currentDate = (new UTCDate(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate())).valueOf(),
 				today = new Date();
-			this.setTitle('.datetimepicker-days', year + ' ' + dates[this.language].months[month])
+			this.setTitle('.datetimepicker-days', '<span class="year">' + year + '</span> <span class="month">' + dates[this.language].months[month] + '</span>')
 			if (this.formatViewType === 'time') {
 				var formatted = this.getFormattedDate();
 				this.setTitle('.datetimepicker-hours', formatted);

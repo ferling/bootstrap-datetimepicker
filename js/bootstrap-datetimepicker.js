@@ -111,6 +111,8 @@
 		this.title = typeof options.title === 'undefined' ? false : options.title;
 		this.timezone = options.timezone || timeZoneAbbreviation();
 
+		this.calendarDayFormat = options.calendarDayFormat || this.element.data('calendar-day-format') || 'd'; // 'd' or 'dd' (with leading zero)
+
 		this.icons = {
 			leftArrow: this.fontAwesome ? 'fa-arrow-left' : (this.bootcssVer === 3 ? 'glyphicon-arrow-left' : 'icon-arrow-left'),
 			rightArrow: this.fontAwesome ? 'fa-arrow-right' : (this.bootcssVer === 3 ? 'glyphicon-arrow-right' : 'icon-arrow-right')
@@ -749,6 +751,7 @@
 			nextMonth = nextMonth.valueOf();
 			var html = [];
 			var classes;
+			var day_number;
 			while (prevMonth.valueOf() < nextMonth) {
 				if (prevMonth.getUTCDay() === this.weekStart) {
 					html.push('<tr>');
@@ -774,7 +777,12 @@
 					$.inArray(prevMonth.toDateString(), this.datesDisabled) !== -1) {
 					classes.push('disabled');
 				}
-				html.push('<td class="' + classes.join(' ') + '">' + prevMonth.getUTCDate() + '</td>');
+				day_number = prevMonth.getUTCDate();
+				if(this.calendarDayFormat == 'dd' && day_number > -10 && day_number < 10) {
+					day_number = '0' + day_number;
+				}
+
+				html.push('<td class="' + classes.join(' ') + '"><span class="day_number">' + day_number + '</span></td>');
 				if (prevMonth.getUTCDay() === this.weekEnd) {
 					html.push('</tr>');
 				}

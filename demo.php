@@ -19,6 +19,7 @@
 				startView: 2,
 				minView: 2,
 				maxView: 2,
+				calendarDayFormat: 'dd',
 				format: 'yyyy-mm-dd hh:ii'
 			});
 		});

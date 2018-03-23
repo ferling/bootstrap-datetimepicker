@@ -553,7 +553,7 @@
 		setTitle: function (selector, value) {
 			return this.picker.find(selector)
 				.find('th:eq(1)')
-				.text(this.title === false ? value : this.title);
+				.html(this.title === false ? value : this.title);
 		},
 
 		setDaysOfWeekDisabled: function (daysOfWeekDisabled) {

@@ -1023,6 +1023,11 @@
 					});
 					return;
 				}
+
+				if($(target[0]).hasClass('day_number')) { // ha day_number spanra kattintunk, akkor nem fog lefutni a changedate
+					$(target[0]).parent().trigger('click');
+				}
+
 				switch (target[0].nodeName.toLowerCase()) {
 					case 'th':
 						switch (target[0].className) {
